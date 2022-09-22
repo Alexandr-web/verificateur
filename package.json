@@ -1,0 +1,37 @@
+{
+  "name": "verificateur",
+  "version": "0.0.0",
+  "description": "A tool that allows you to validate your form and also acts as a helper when submitting data to the server",
+  "main": "./build/Verificateur.js",
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/__tests__/functions/"
+    ],
+    "testEnvironment": "jsdom"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "validate"
+  ],
+  "author": "Alexandr Yakovlev",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.19.1",
+    "@testing-library/dom": "^8.18.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "eslint": "^8.23.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-uglify": "^3.0.2",
+    "jest": "^29.0.3",
+    "jest-environment-jsdom": "^29.0.3",
+    "jsdom": "^20.0.0",
+    "webpack-stream": "^7.0.0"
+  }
+}
