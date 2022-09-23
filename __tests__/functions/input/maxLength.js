@@ -5,7 +5,7 @@ export default () => {
   document.body.innerHTML = `
     <div>
       <span></span>
-      <input type="text" value="10" />
+      <input type="text" value="Hello, worlD!" />
     </div>
   `;
 
@@ -13,7 +13,7 @@ export default () => {
     {
       element: null,
       isError: true,
-      args: [0, 10],
+      args: [],
       testMethod: {
         name: "toThrowError",
         args: ["The target must be an HTML element"],
@@ -22,7 +22,7 @@ export default () => {
     {
       element: document.querySelector("span"),
       isError: true,
-      args: [0, 10],
+      args: [],
       testMethod: {
         name: "toThrowError",
         args: ["Target must be a input"],
@@ -31,15 +31,15 @@ export default () => {
     {
       element: document.querySelector("input"),
       isError: true,
-      args: [0, false],
+      args: [],
       testMethod: {
         name: "toThrowError",
-        args: ["Argument must be of type number"],
+        args: ["The first argument must be of type number"],
       },
     },
     {
       element: document.querySelector("input"),
-      args: [0, 4],
+      args: [5],
       testMethod: {
         name: "toBeFalsy",
         args: [],
@@ -52,7 +52,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Input(element).between(...args);
+        return new Input(element).maxLength(...args);
       },
     };
   });

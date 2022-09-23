@@ -6,7 +6,8 @@
   "jest": {
     "modulePathIgnorePatterns": [
       "<rootDir>/node_modules/",
-      "<rootDir>/__tests__/functions/"
+      "<rootDir>/__tests__/functions/",
+      "<rootDir>/__tests__/testHandler.js"
     ],
     "testEnvironment": "jsdom"
   },

@@ -7,8 +7,7 @@ const plumber = require("gulp-plumber");
 const buildFolderName = "build";
 const paths = {
   js: {
-    from: "./src/index.js",
-    watchSrc: "./src/**/*.js",
+    from: "./src/**/*.js",
     to: `./${buildFolderName}`,
     fileName: "main.js",
   },
@@ -44,10 +43,10 @@ const js = () => {
 };
 
 const watching = () => {
-  watch(paths.js.watchSrc || paths.js.from, parallel(js));
-  watch(paths.jsBuild.watchSrc || paths.js.from, parallel(jsBuild));
+  watch(paths.js.from, parallel(js));
+  watch(paths.js.from, parallel(jsBuild));
 };
 
-exports.build = parallel(js);
+exports.build = parallel(js, jsBuild);
 exports.default = parallel(js, watching);
 exports.buildLibrary = parallel(jsBuild);

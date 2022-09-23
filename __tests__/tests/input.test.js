@@ -1,14 +1,53 @@
-import { expect, test, describe, } from "@jest/globals";
-import { between, } from "../functions/input/index";
+import { test, describe, } from "@jest/globals";
+import testHandler from "../testHandler";
+import { between, onlyLetters, onlyNumbers, isEmail, hasLetters, hasNumbers, isEmpty, beginWith, endWith, minLength, maxLength, mustContain, } from "../functions/input/index";
 
 describe("Input tests", () => {
   test("between", () => {
-    between().map(({ testMethod, setParams, isError, }) => {
-      if (isError) {
-        expect(() => { setParams(); })[testMethod.name](...testMethod.args);
-      } else {
-        expect(setParams())[testMethod.name](...testMethod.args);
-      }
-    });
+    testHandler(between());
+  });
+
+  test("onlyLetters", () => {
+    testHandler(onlyLetters());
+  });
+
+  test("onlyNumbers", () => {
+    testHandler(onlyNumbers());
+  });
+
+  test("isEmail", () => {
+    testHandler(isEmail());
+  });
+
+  test("hasLetters", () => {
+    testHandler(hasLetters());
+  });
+
+  test("hasNumbers", () => {
+    testHandler(hasNumbers());
+  });
+
+  test("isEmpty", () => {
+    testHandler(isEmpty());
+  });
+
+  test("beginWith", () => {
+    testHandler(beginWith());
+  });
+
+  test("endWith", () => {
+    testHandler(endWith());
+  });
+
+  test("minLength", () => {
+    testHandler(minLength());
+  });
+
+  test("maxLength", () => {
+    testHandler(maxLength());
+  });
+
+  test("mustContain", () => {
+    testHandler(mustContain());
   });
 });
