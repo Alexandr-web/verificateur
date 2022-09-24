@@ -1,3 +1,3 @@
 export default (target) => {
-  return target.nodeName.toLowerCase() === "input";
+  return ["input", "textarea"].includes(target.nodeName.toLowerCase());
 };

@@ -3,6 +3,7 @@ import isInput from "./isInput";
 import isNumber from "./isNumber";
 import isString from "./isString";
 import isObject from "./isObject";
+import isFormElement from "./isFormElement";
 
 export {
   isElement,
@@ -10,4 +11,5 @@ export {
   isNumber,
   isString,
   isObject,
+  isFormElement,
 };

@@ -5,7 +5,7 @@ export default () => {
   document.body.innerHTML = `
     <div>
       <span></span>
-      <input type="text" value="a 2 b" />
+      <input type="text" value="11/10/2004" />
     </div>
   `;
 
@@ -30,10 +30,19 @@ export default () => {
     },
     {
       element: document.querySelector("input"),
-      args: [],
+      args: [false, "/"],
       testMethod: {
         name: "toBeTruthy",
         args: [],
+      },
+    },
+    {
+      element: document.querySelector("input"),
+      isError: true,
+      args: [false, 2004],
+      testMethod: {
+        name: "toThrowError",
+        args: ["Argument must be of type string"],
       },
     }
   ];
@@ -43,7 +52,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).hasLetters(...args);
+        return new Verificateur(element).isDate(...args);
       },
     };
   });

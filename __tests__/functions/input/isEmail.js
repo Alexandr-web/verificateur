@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import Input from "../../../src/utils/Input";
+import Verificateur from "../../../src/Verificateur";
 
 export default () => {
   document.body.innerHTML = `
@@ -25,7 +25,7 @@ export default () => {
       args: [],
       testMethod: {
         name: "toThrowError",
-        args: ["Target must be a input"],
+        args: ["The target must be one of the following: input, textarea, select, datalist or output"],
       },
     },
     {
@@ -43,7 +43,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Input(element).isEmail(...args);
+        return new Verificateur(element).isEmail(...args);
       },
     };
   });

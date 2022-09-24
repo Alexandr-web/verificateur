@@ -5,7 +5,7 @@ export default () => {
   document.body.innerHTML = `
     <div>
       <span></span>
-      <input type="text" value="a 2 b" />
+      <input type="text" value="Hello, WorLd!" />
     </div>
   `;
 
@@ -30,9 +30,26 @@ export default () => {
     },
     {
       element: document.querySelector("input"),
+      isError: true,
       args: [],
       testMethod: {
+        name: "toThrowError",
+        args: ["First argument must be of type string"],
+      },
+    },
+    {
+      element: document.querySelector("input"),
+      args: ["hello, world!", true],
+      testMethod: {
         name: "toBeTruthy",
+        args: [],
+      },
+    },
+    {
+      element: document.querySelector("input"),
+      args: ["hello, world!"],
+      testMethod: {
+        name: "toBeFalsy",
         args: [],
       },
     }
@@ -43,7 +60,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).hasLetters(...args);
+        return new Verificateur(element).toBe(...args);
       },
     };
   });

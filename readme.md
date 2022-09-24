@@ -6,7 +6,7 @@ A tool that allows you to validate your form and also acts as a helper when subm
 
 ```javascript
 const input = document.querySelector(".input");
-const inputVr = new Verificateur(input);
+const inputVr = Verificateur(input);
 
 input.addEventListener("blur", () => {
   // If there are numbers and the minimum length is 9 characters

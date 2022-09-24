@@ -10,6 +10,9 @@ import endWith from "./endWith";
 import minLength from "./minLength";
 import maxLength from "./maxLength";
 import mustContain from "./mustContain";
+import toBe from "./toBe";
+import isDate from "./isDate";
+import isUrl from "./isUrl";
 
 export {
   between,
@@ -24,4 +27,7 @@ export {
   minLength,
   maxLength,
   mustContain,
+  toBe,
+  isDate,
+  isUrl,
 };

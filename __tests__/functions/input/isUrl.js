@@ -5,7 +5,7 @@ export default () => {
   document.body.innerHTML = `
     <div>
       <span></span>
-      <input type="text" value="a 2 b" />
+      <input type="text" value="www.alex@a231.com" />
     </div>
   `;
 
@@ -43,7 +43,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).hasLetters(...args);
+        return new Verificateur(element).isUrl(...args);
       },
     };
   });
