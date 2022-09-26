@@ -249,4 +249,37 @@ export default class Input {
 
     return rules.every(Boolean);
   }
+
+  mustNotContain(options) {
+    if (!isElement(this)) {
+      throw new Error("The target must be an HTML element");
+    }
+  
+    if (!isFormElement(this)) {
+      throw new Error("The target must be one of the following: input, textarea, select, datalist or output");
+    }
+
+    if (!isObject(options)) {
+      throw new Error("Argument must be of type object");
+    }
+
+    let rules = [];
+    const { numbers, spaces, other, } = options;
+
+    if (numbers) {
+      rules = rules.concat(checkStringFromBeginningToEnd(numbers, /\d+/g, /\d/, this.value));
+    }
+
+    if (spaces) {
+      rules = rules.concat(checkStringFromBeginningToEnd(spaces, /\s+/g, /\s/, this.value));
+    }
+
+    if (other) {
+      Object.keys(other).map((key) => {
+        rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
+      });
+    }
+
+    return !rules.every(Boolean);
+  }
 }

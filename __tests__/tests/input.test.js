@@ -16,6 +16,7 @@ import {
   toBe,
   isDate,
   isUrl,
+  mustNotContain,
 } from "../functions/input/index";
 
 describe("Input tests", () => {
@@ -34,4 +35,5 @@ describe("Input tests", () => {
   test("toBe", () => testHandler(toBe()));
   test("isDate", () => testHandler(isDate()));
   test("isUrl", () => testHandler(isUrl()));
+  test("mustNotContain", () => testHandler(mustNotContain()));
 });

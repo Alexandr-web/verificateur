@@ -39,7 +39,7 @@ export default () => {
     {
       element: document.querySelector("input"),
       isError: true,
-      args: [false, 2004],
+      args: [false, Number],
       testMethod: {
         name: "toThrowError",
         args: ["Argument must be of type string"],

@@ -5,7 +5,7 @@ export default () => {
   document.body.innerHTML = `
     <div>
       <span></span>
-      <input type="text" value="10" />
+      <input type="text" value="123 $! 321" />
     </div>
   `;
 
@@ -31,15 +31,22 @@ export default () => {
     {
       element: document.querySelector("input"),
       isError: true,
-      args: [Number, Boolean],
+      args: [],
       testMethod: {
         name: "toThrowError",
-        args: ["Arguments must be of type number"],
+        args: ["Argument must be of type object"],
       },
     },
     {
       element: document.querySelector("input"),
-      args: [0, 4],
+      args: [{
+        numbers: {
+          start: [0, 7],
+          end: [2, 9],
+        },
+        spaces: { points: [3, 6], },
+        other: { $: true, "!": true, },
+      }],
       testMethod: {
         name: "toBeFalsy",
         args: [],
@@ -52,7 +59,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return Verificateur(element).between(...args);
+        return Verificateur(element).mustNotContain(...args);
       },
     };
   });

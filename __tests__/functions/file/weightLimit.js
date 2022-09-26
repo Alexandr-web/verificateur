@@ -49,7 +49,7 @@ export default () => {
     },
     {
       element: document.querySelector("input[type=file]"),
-      args: [10, Boolean],
+      args: [0, Boolean],
       isError: true,
       testMethod: {
         name: "toThrowError",
