@@ -390,3 +390,48 @@ console.log(inputVr.mustNotContain({
     spaces: true,
 }));
 ```
+
+### weightLimit(size: Number, unit: String): Boolean
+This method returns true if the weight of the files in input would be less than or equal to the `size` argument
+
+The method includes the following arguments:
+
+* `size`: Number *(REQUIRED)*
+	limited size
+* `unit`: String *(OPTIONAL)*
+	File size unit. There are 5 in total: "bt" - bytes (default), "kb" - kilobytes,
+"mb" - megabytes, "gb" - gigabytes, "tb" - terabytes
+
+##### HTML
+```html
+<input type="file" multiple>
+```
+##### JavaScript
+```javascript
+const input = document.querySelector("input");
+const inputVr = Verificateur(input);
+
+// It will be true if the weight of all input files is less than 5 megabytes
+console.log(inputVr.weightLimit(5, "mb"));
+```
+
+### mustContainType(types: String|Array): Boolean
+Returns true if all files are of type `types` argument
+
+The method includes the following arguments:
+
+* `types`: String|Array *(REQUIRED)*
+	Indicates the type(s) of file(s)
+
+##### HTML
+```html
+<input type="file" multiple>
+```
+##### JavaScript
+```javascript
+const input = document.querySelector("input");
+const inputVr = Verificateur(input);
+
+// Will be true if the files are of any type from this list
+console.log(inputVr.mustContainType(["text/plain", "image/png"]));
+```
