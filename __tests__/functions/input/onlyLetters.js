@@ -51,7 +51,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).onlyLetters(...args);
+        return Verificateur(element).onlyLetters(...args);
       },
     };
   });

@@ -1,4 +1,4 @@
-import { isElement, isFormElement, isNumber, isString, isObject, } from "../helpers/index";
+import { isElement, isFormElement, isNumber, isString, isObject, checkStringFromBeginningToEnd, } from "../helpers/index";
 
 export default class Input {
   hasLetters() {
@@ -70,43 +70,6 @@ export default class Input {
     }
 
     return !this.value.length;
-  }
-
-  canContain(options) {
-    if (!isElement(this)) {
-      throw new Error("The target must be an HTML element");
-    }
-  
-    if (!isFormElement(this)) {
-      throw new Error("The target must be one of the following: input, textarea, select, datalist or output");
-    }
-
-    if (!isObject(options)) {
-      throw new Error("Argument must be of type object");
-    }
-
-    const rules = [];
-    const {
-      numbers,
-      spaces,
-      other = [],
-    } = options;
-
-    if (numbers) {
-      rules.push(/\d+/gi.test(this.value));
-    }
-
-    if (spaces) {
-      rules.push(/\s+/g.test(this.value));
-    }
-
-    if (other.length) {
-      rules.push(other.some((symbol) => this.value.includes(symbol)));
-    }
-
-    const regexp = new RegExp(`^[${numbers ? "\\d|" : ""}${spaces ? "\\s|" : ""}${other.length ? `${other.join("")}` : ""}]+$`);
-
-    return regexp.test(this.value);
   }
 
   toBe(string, ignoreRegister) {
@@ -267,23 +230,21 @@ export default class Input {
       throw new Error("Argument must be of type object");
     }
 
-    const rules = [];
-    const {
-      numbers,
-      spaces,
-      other = [],
-    } = options;
+    let rules = [];
+    const { numbers, spaces, other, } = options;
 
     if (numbers) {
-      rules.push(/\d+/gi.test(this.value));
+      rules = rules.concat(checkStringFromBeginningToEnd(numbers, /\d+/g, /\d/, this.value));
     }
 
     if (spaces) {
-      rules.push(/\s+/g.test(this.value));
+      rules = rules.concat(checkStringFromBeginningToEnd(spaces, /\s+/g, /\s/, this.value));
     }
 
-    if (other.length) {
-      rules.push(other.every((symbol) => this.value.includes(symbol)));
+    if (other) {
+      Object.keys(other).map((key) => {
+        rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
+      });
     }
 
     return rules.every(Boolean);

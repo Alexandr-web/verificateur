@@ -43,7 +43,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).isEmail(...args);
+        return Verificateur(element).isEmail(...args);
       },
     };
   });

@@ -63,7 +63,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).weightLimit(...args);
+        return Verificateur(element).weightLimit(...args);
       },
     };
   });

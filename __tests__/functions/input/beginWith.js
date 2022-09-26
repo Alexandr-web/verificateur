@@ -52,7 +52,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).beginWith(...args);
+        return Verificateur(element).beginWith(...args);
       },
     };
   });

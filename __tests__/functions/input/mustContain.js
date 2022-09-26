@@ -39,7 +39,14 @@ export default () => {
     },
     {
       element: document.querySelector("input"),
-      args: [{ numbers: true, spaces: true, other: ["$", "!"], }],
+      args: [{
+        numbers: {
+          start: [0, 7],
+          end: [2, 9],
+        },
+        spaces: { points: [3, 6], },
+        other: { $: true, "!": true, },
+      }],
       testMethod: {
         name: "toBeTruthy",
         args: [],
@@ -52,7 +59,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).mustContain(...args);
+        return Verificateur(element).mustContain(...args);
       },
     };
   });

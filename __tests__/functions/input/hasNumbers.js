@@ -43,7 +43,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).hasNumbers(...args);
+        return Verificateur(element).hasNumbers(...args);
       },
     };
   });

@@ -52,7 +52,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).isDate(...args);
+        return Verificateur(element).isDate(...args);
       },
     };
   });

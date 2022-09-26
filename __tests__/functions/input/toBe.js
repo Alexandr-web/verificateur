@@ -60,7 +60,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).toBe(...args);
+        return Verificateur(element).toBe(...args);
       },
     };
   });

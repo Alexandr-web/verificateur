@@ -54,7 +54,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).mustContainType(...args);
+        return Verificateur(element).mustContainType(...args);
       },
     };
   });

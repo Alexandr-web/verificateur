@@ -51,7 +51,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).onlyNumbers(...args);
+        return Verificateur(element).onlyNumbers(...args);
       },
     };
   });

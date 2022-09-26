@@ -52,7 +52,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).maxLength(...args);
+        return Verificateur(element).maxLength(...args);
       },
     };
   });

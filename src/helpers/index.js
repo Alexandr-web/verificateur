@@ -10,6 +10,8 @@ import getInKilobytes from "./getInKilobytes";
 import getInMegabytes from "./getInMegabytes";
 import getInGigabytes from "./getInGigabytes";
 import receiveInTerabytes from "./receiveInTerabytes";
+import checkStringFromBeginningToEnd from "./checkStringFromBeginningToEnd";
+import isBoolean from "./isBoolean";
 
 export {
   isElement,
@@ -24,4 +26,6 @@ export {
   getInMegabytes,
   getInGigabytes,
   receiveInTerabytes,
+  checkStringFromBeginningToEnd,
+  isBoolean,
 };
