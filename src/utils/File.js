@@ -7,6 +7,7 @@ import {
   getInGigabytes,
   receiveInTerabytes,
   isString,
+  isArray,
 } from "../helpers/index";
 
 export default class File {
@@ -27,8 +28,7 @@ export default class File {
       throw new Error("The second argument must be of type string");
     }
 
-    const files = this.files;
-    const totalSize = [...files].reduce((acc, { size: sizeFile, }) => acc += sizeFile, 0);
+    const totalSize = [...this.files].reduce((acc, { size: sizeFile, }) => acc += sizeFile, 0);
 
     switch (unit) {
       case "kb":
@@ -43,5 +43,25 @@ export default class File {
       default:
         return totalSize <= size;
     }
+  }
+
+  mustContainType(types) {
+    if (!isElement(this)) {
+      throw new Error("The target must be an HTML element");
+    }
+
+    if (!isInputFile(this)) {
+      throw new Error("The target must be of type file");
+    }
+
+    if (!isString(types) && !isArray(types)) {
+      throw new Error("Argument must be of type string or array");
+    }
+
+    if (isArray(types)) {
+      return [...this.files].every(({ type, }) => types.includes(type));
+    }
+
+    return [...this.files].every(({ type, }) => type === types);
   }
 }
