@@ -1,6 +1,7 @@
 import Input from "./utils/Input";
+import File from "./utils/File";
 
-const classes = [Input];
+const classes = [Input, File];
 
 export default (target) => {
   return classes.reduce((acc, objClass) => {

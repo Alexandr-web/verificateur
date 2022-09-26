@@ -4,6 +4,12 @@ import isNumber from "./isNumber";
 import isString from "./isString";
 import isObject from "./isObject";
 import isFormElement from "./isFormElement";
+import isInputFile from "./isInputFile";
+import isArray from "./isArray";
+import getInKilobytes from "./getInKilobytes";
+import getInMegabytes from "./getInMegabytes";
+import getInGigabytes from "./getInGigabytes";
+import receiveInTerabytes from "./receiveInTerabytes";
 
 export {
   isElement,
@@ -12,4 +18,10 @@ export {
   isString,
   isObject,
   isFormElement,
+  isInputFile,
+  isArray,
+  getInKilobytes,
+  getInMegabytes,
+  getInGigabytes,
+  receiveInTerabytes,
 };

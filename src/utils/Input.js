@@ -52,7 +52,7 @@ export default class Input {
     }
 
     if ([less, more].some((val) => !isNumber(val))) {
-      throw new Error("Argument must be of type number");
+      throw new Error("Arguments must be of type number");
     }
 
     const value = parseInt(this.value);

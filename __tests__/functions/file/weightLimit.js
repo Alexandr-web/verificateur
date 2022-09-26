@@ -5,7 +5,8 @@ export default () => {
   document.body.innerHTML = `
     <div>
       <span></span>
-      <input type="text" value="10" />
+      <input type="file" />
+      <input type="number" />
     </div>
   `;
 
@@ -13,7 +14,7 @@ export default () => {
     {
       element: null,
       isError: true,
-      args: [0, 10],
+      args: [],
       testMethod: {
         name: "toThrowError",
         args: ["The target must be an HTML element"],
@@ -22,27 +23,37 @@ export default () => {
     {
       element: document.querySelector("span"),
       isError: true,
-      args: [0, 10],
+      args: [],
       testMethod: {
         name: "toThrowError",
-        args: ["The target must be one of the following: input, textarea, select, datalist or output"],
+        args: ["The target must be of type file"],
       },
     },
     {
-      element: document.querySelector("input"),
+      element: document.querySelector("input[type=number]"),
       isError: true,
-      args: [0, false],
+      args: [],
       testMethod: {
         name: "toThrowError",
-        args: ["Arguments must be of type number"],
+        args: ["The target must be of type file"],
       },
     },
     {
-      element: document.querySelector("input"),
-      args: [0, 4],
+      element: document.querySelector("input[type=file]"),
+      args: ["string"],
+      isError: true,
       testMethod: {
-        name: "toBeFalsy",
-        args: [],
+        name: "toThrowError",
+        args: ["Argument must be of type number"],
+      },
+    },
+    {
+      element: document.querySelector("input[type=file]"),
+      args: [10, Boolean],
+      isError: true,
+      testMethod: {
+        name: "toThrowError",
+        args: ["The second argument must be of type string"],
       },
     }
   ];
@@ -52,7 +63,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return new Verificateur(element).between(...args);
+        return new Verificateur(element).weightLimit(...args);
       },
     };
   });

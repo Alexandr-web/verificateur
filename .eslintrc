@@ -78,6 +78,7 @@
     "no-extend-native": "off",
     "no-useless-constructor": "off",
     "no-prototype-builtins": "off",
-    "no-proto": "off"
+    "no-proto": "off",
+    "import/prefer-default-export": "off"
   }
 }
