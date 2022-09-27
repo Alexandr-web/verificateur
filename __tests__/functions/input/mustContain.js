@@ -6,10 +6,31 @@ export default () => {
     <div>
       <span></span>
       <input type="text" value="123 $! 321" />
+      <input class="ex-1" type="text" value="N1234 5678 9012 3456">
     </div>
   `;
 
   const tests = [
+    {
+      element: document.querySelector(".ex-1"),
+      args: [{
+        numbers: {
+          start: [1, 6, 11, 16],
+          end: [4, 9, 14, 19],
+        },
+        spaces: { points: [5, 10, 15], },
+        other: {
+            n: {
+                points: [0],
+                ignoreRegister: true,
+            },
+        },
+      }],
+      testMethod: {
+        name: "toBeTruthy",
+        args: [],
+      },
+    },
     {
       element: null,
       isError: true,

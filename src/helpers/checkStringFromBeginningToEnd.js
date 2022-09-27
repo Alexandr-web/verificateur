@@ -14,7 +14,7 @@ export default (options, defaultRegexp, regexpForSymbols, value) => {
         }
       });
     } else if (points.length) {
-      points.map((point) => rules.push(new RegExp(regexpForSymbols).test(value[point])));
+      points.map((point) => rules.push(new RegExp(regexpForSymbols, ignoreRegister ? "i" : "").test(value[point])));
     } else {
       rules.push(new RegExp(regexpForSymbols, ignoreRegister ? "i" : "").test(value));
     }
