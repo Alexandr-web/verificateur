@@ -1,4 +1,4 @@
-import { isElement, isFormElement, isNumber, isString, isObject, checkStringFromBeginningToEnd, } from "../helpers/index";
+import { isElement, isFormElement, isNumber, isString, isObject, checkStringFromBeginningToEnd, isArray, } from "../helpers/index";
 
 export default class Input {
   hasLetters() {
@@ -72,7 +72,7 @@ export default class Input {
     return !this.value.length;
   }
 
-  toBe(string, ignoreRegister) {
+  toBe(string, ignoreRegister = false) {
     if (!isElement(this)) {
       throw new Error("The target must be an HTML element");
     }
@@ -234,17 +234,24 @@ export default class Input {
     const { numbers, spaces, other, } = options;
 
     if (numbers) {
-      rules = rules.concat(checkStringFromBeginningToEnd(numbers, /\d+/g, /\d/, this.value));
+      rules = rules.concat(checkStringFromBeginningToEnd(numbers, /\d+/, /\d/, this.value));
     }
 
     if (spaces) {
-      rules = rules.concat(checkStringFromBeginningToEnd(spaces, /\s+/g, /\s/, this.value));
+      rules = rules.concat(checkStringFromBeginningToEnd(spaces, /\s+/, /\s/, this.value));
     }
 
     if (other) {
-      Object.keys(other).map((key) => {
-        rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
-      });
+      if (isObject(other)) {
+        Object.keys(other).map((key) => {
+          // Каждый ключ - отдельный символ
+          rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
+        });
+      }
+
+      if (isArray(other)) {
+        other.map((symbol) => rules.push(this.value.includes(symbol)));
+      }
     }
 
     return rules.every(Boolean);
@@ -275,9 +282,16 @@ export default class Input {
     }
 
     if (other) {
-      Object.keys(other).map((key) => {
-        rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
-      });
+      if (isObject(other)) {
+        Object.keys(other).map((key) => {
+          // Каждый ключ - отдельный символ
+          rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
+        });
+      }
+
+      if (isArray(other)) {
+        other.map((symbol) => rules.push(this.value.includes(symbol)));
+      }
     }
 
     return !rules.every(Boolean);

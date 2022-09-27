@@ -285,7 +285,7 @@ The `options` argument has the following settings:
 
 
 	The input value must contain spaces
-* `other`: Object *(OPTIONAL)*
+* `other`: Object|Array *(OPTIONAL)*
 
 
 	The input value must contain the characters you specify
@@ -331,7 +331,7 @@ console.log(input2Vr.mustContain({
     // The input value must have spaces
     spaces: true,
     // The input value must have a ";"
-    other: { ";": true, },
+    other: [";"],
 }));
 ```
 
@@ -418,7 +418,7 @@ The `options` argument has the following settings:
 
 
 	The input value must not contain spaces
-* `other`: Object *(OPTIONAL)*
+* `other`: Object|Array *(OPTIONAL)*
 
 
 	The input value must not contain the characters you specify
