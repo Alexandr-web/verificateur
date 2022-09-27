@@ -21,7 +21,16 @@ input.addEventListener("blur", () => {
 ## Methods
 
 ### between(less: Number, more: Number): Boolean
-This method takes 2 arguments - less than and more than. It returns true if the input value is in this range
+This method returns true if the value in input is greater than or equal to the `less` argument and less than or equal to the `more` argument
+
+* `less`: Number *(REQUIRED)*
+  
+
+	Minimum value
+* `more`: Number *(REQUIRED)*
+
+
+	Maximum value
 
 ##### HTML
   ```html
@@ -42,11 +51,11 @@ This method returns true if the input value contains only letters. The options a
 
 The options argument includes the following options:
 
-* `useSpace`: *(OPTIONAL)* Boolean
+* `useSpace`: Boolean *(OPTIONAL)*
 
 
 	Allows spaces
-* `punctuationMarks`: *(OPTIONAL)* Boolean
+* `punctuationMarks`: Boolean *(OPTIONAL)*
 
 
 	Allows the use of punctuation (?.,!@#$%^&*())
@@ -73,11 +82,11 @@ This method returns true if the input value contains only numbers. The options a
 
 The options argument includes the following options:
 
-* `useSpace`: *(OPTIONAL)* Boolean
+* `useSpace`: Boolean *(OPTIONAL)*
 
 
 	Allows spaces
-* `punctuationMarks`: *(OPTIONAL)* Boolean
+* `punctuationMarks`: Boolean *(OPTIONAL)*
 
 
 	Allows the use of punctuation (?.,!@#$%^&*())
