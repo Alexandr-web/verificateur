@@ -7,10 +7,23 @@ export default () => {
       <span></span>
       <input type="text" value="123 $! 321" />
       <input class="ex-1" type="text" value="N1234 5678 9012 3456">
+      <input class="ex-2" type="text" value="@@">
     </div>
   `;
 
   const tests = [
+    {
+      element: document.querySelector(".ex-2"),
+      args: [{
+        other: [
+          { regexp: /^@{2,4}/, }
+        ],
+      }],
+      testMethod: {
+        name: "toBeTruthy",
+        args: [],
+      },
+    },
     {
       element: document.querySelector(".ex-1"),
       args: [{

@@ -294,13 +294,16 @@ The `options` argument has the following settings:
 ```html
 <input class="ex-1" type="text" value="N1234 5678 9012 3456">
 <input class="ex-2" type="text" value="12345678HELLO9012() 3456№;!">
+<input class="ex-3" type="text" value="@@aa">
 ```
 ##### JavaScript
 ```javascript
 const input1 = document.querySelector(".ex-1");
 const input2 = document.querySelector(".ex-2");
+const input3 = document.querySelector(".ex-3");
 const input1Vr = Verificateur(input1);
 const input2Vr = Verificateur(input2);
+const input3Vr = Verificateur(input3);
 
 // true
 console.log(input1Vr.mustContain({
@@ -324,7 +327,7 @@ console.log(input1Vr.mustContain({
     }
 }));
 
-// You can also pass a boolean value
+// You can use shorthand
 console.log(input2Vr.mustContain({
     // The input value must have numbers
     numbers: true,
@@ -332,6 +335,16 @@ console.log(input2Vr.mustContain({
     spaces: true,
     // The input value must have a ";"
     other: [";"],
+}));
+
+// Also you can use regexp property
+console.log(input3Vr.mustContain({
+    other: [
+      {
+        regexp: /\@{1,3}/,
+        ignoreRegister: true,
+      }
+    ]
 }));
 ```
 

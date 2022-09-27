@@ -250,7 +250,15 @@ export default class Input {
       }
 
       if (isArray(other)) {
-        other.map((symbol) => rules.push(this.value.includes(symbol)));
+        other.map((symbol) => {
+          if (isString(symbol)) {
+            rules.push(this.value.includes(symbol));
+          }
+
+          if (isObject(symbol) && symbol.regexp) {
+            rules = rules.concat(checkStringFromBeginningToEnd(symbol, symbol.regexp, symbol.regexp, this.value));
+          }
+        });
       }
     }
 
@@ -290,7 +298,15 @@ export default class Input {
       }
 
       if (isArray(other)) {
-        other.map((symbol) => rules.push(this.value.includes(symbol)));
+        other.map((symbol) => {
+          if (isString(symbol)) {
+            rules.push(this.value.includes(symbol));
+          }
+
+          if (isObject(symbol) && symbol.regexp) {
+            rules = rules.concat(checkStringFromBeginningToEnd(symbol, symbol.regexp, symbol.regexp, this.value));
+          }
+        });
       }
     }
 
