@@ -64,4 +64,20 @@ export default class File {
 
     return [...this.files].every(({ type, }) => type === types);
   }
+
+  limitedQuantity(size) {
+    if (!isElement(this)) {
+      throw new Error("The target must be an HTML element");
+    }
+
+    if (!isInputFile(this)) {
+      throw new Error("The target must be of type file");
+    }
+
+    if (!isNumber(size)) {
+      throw new Error("Argument must be of type number");
+    }
+
+    return this.files.length <= size;
+  }
 }

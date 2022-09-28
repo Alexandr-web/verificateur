@@ -46,15 +46,6 @@ export default () => {
         name: "toThrowError",
         args: ["Argument must be of type number"],
       },
-    },
-    {
-      element: document.querySelector("input[type=file]"),
-      args: [0, Boolean],
-      isError: true,
-      testMethod: {
-        name: "toThrowError",
-        args: ["The second argument must be of type string"],
-      },
     }
   ];
 
@@ -63,7 +54,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return Verificateur(element).weightLimit(...args);
+        return Verificateur(element).limitedQuantity(...args);
       },
     };
   });

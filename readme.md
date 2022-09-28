@@ -12,7 +12,7 @@ const inputVr = Verificateur(input);
 
 input.addEventListener("blur", () => {
   // If there are numbers and the minimum length is 9 characters
-  if (inputVr.mustContain({ numbers: true, }) && inputVr.minLength(9)) {
+  if (inputVr.onlyNumbers() && inputVr.minLength(9)) {
     ...
   }
 });
@@ -478,6 +478,29 @@ const inputVr = Verificateur(input);
 
 // It will be true if the weight of all input files is less than 5 megabytes
 console.log(inputVr.weightLimit(5, "mb"));
+```
+
+### limitedQuantity(size: Number): Boolean
+This method returns true if the number of files uploaded would be less than or equal to the `size` argument
+
+The method includes the following arguments:
+
+* `size`: Number *(REQUIRED)*
+
+
+	limited size
+
+##### HTML
+```html
+<input type="file" multiple>
+```
+##### JavaScript
+```javascript
+const input = document.querySelector("input");
+const inputVr = Verificateur(input);
+
+// We want a maximum of 5 files
+console.log(inputVr.limitedQuantity(5));
 ```
 
 ### mustContainType(types: String|Array): Boolean
