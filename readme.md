@@ -418,6 +418,29 @@ const inputVr = Verificateur(input);
 console.log(inputVr.isUrl());
 ```
 
+### contains(values: Array): Boolean
+This method returns true if the input value matches one of the values in the `values` argument.
+
+The method includes the following arguments:
+
+* `values`: Array *(REQUIRED)*
+
+
+	List of possible values
+
+##### HTML
+```html
+<input type="text" value="hello world">
+```
+##### JavaScript
+```javascript
+const input = document.querySelector("input");
+const inputVr = Verificateur(input);
+
+// true
+console.log(inputVr.contains(["hello", "!", "all"]));
+```
+
 ### mustNotContain(options: Object): Boolean
 This method returns true if the input value will not contain the value from the "options" argument. Very similar to the `mustContain` method
 

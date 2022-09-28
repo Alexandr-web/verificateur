@@ -312,4 +312,24 @@ export default class Input {
 
     return !rules.every(Boolean);
   }
+
+  contains(values) {
+    if (!isElement(this)) {
+      throw new Error("The target must be an HTML element");
+    }
+  
+    if (!isFormElement(this)) {
+      throw new Error("The target must be one of the following: input, textarea, select, datalist or output");
+    }
+
+    if (!isArray(values)) {
+      throw new Error("Argument must be of type array");
+    }
+
+    if (values.some((val) => !isString(val))) {
+      throw new Error("Arguments must be of type string");
+    }
+
+    return values.map((val) => this.value.includes(val)).some(Boolean);
+  }
 }

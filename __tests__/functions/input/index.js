@@ -14,6 +14,7 @@ import toBe from "./toBe";
 import isDate from "./isDate";
 import isUrl from "./isUrl";
 import mustNotContain from "./mustNotContain";
+import contains from "./contains";
 
 export {
   between,
@@ -32,4 +33,5 @@ export {
   isDate,
   isUrl,
   mustNotContain,
+  contains,
 };
