@@ -476,8 +476,10 @@ The method includes the following arguments:
 const input = document.querySelector("input");
 const inputVr = Verificateur(input);
 
-// It will be true if the weight of all input files is less than 5 megabytes
-console.log(inputVr.weightLimit(5, "mb"));
+input.addEventListener("change", () => {
+  // It will be true if the weight of all input files is less than 5 megabytes
+  console.log(inputVr.weightLimit(5, "mb"));
+});
 ```
 
 ### limitedQuantity(size: Number): Boolean
@@ -499,8 +501,10 @@ The method includes the following arguments:
 const input = document.querySelector("input");
 const inputVr = Verificateur(input);
 
-// We want a maximum of 5 files
-console.log(inputVr.limitedQuantity(5));
+input.addEventListener("change", () => {
+  // We want a maximum of 5 files
+  console.log(inputVr.limitedQuantity(5));
+});
 ```
 
 ### mustContainType(types: String|Array): Boolean
@@ -522,6 +526,8 @@ The method includes the following arguments:
 const input = document.querySelector("input");
 const inputVr = Verificateur(input);
 
-// Will be true if the files are of any type from this list
-console.log(inputVr.mustContainType(["text/plain", "image/png"]));
+input.addEventListener("change", () => {
+  // Will be true if the files are of any type from this list
+  console.log(inputVr.mustContainType(["text/plain", "image/png"]));
+});
 ```
