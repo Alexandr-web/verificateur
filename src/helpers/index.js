@@ -12,6 +12,7 @@ import getInGigabytes from "./getInGigabytes";
 import receiveInTerabytes from "./receiveInTerabytes";
 import checkStringFromBeginningToEnd from "./checkStringFromBeginningToEnd";
 import isBoolean from "./isBoolean";
+import setRulesForContain from "./setRulesForContain";
 
 export {
   isElement,
@@ -28,4 +29,5 @@ export {
   receiveInTerabytes,
   checkStringFromBeginningToEnd,
   isBoolean,
+  setRulesForContain,
 };

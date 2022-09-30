@@ -8,22 +8,12 @@ export default () => {
       <input type="text" value="123 $! 321" />
       <input class="ex-1" type="text" value="N1234 5678 9012 3456">
       <input class="ex-2" type="text" value="@@">
+      <input class="ex-3" type="text" value="12345">
+      <input class="ex-4" type="text" value="@@@ @@@">
     </div>
   `;
 
   const tests = [
-    {
-      element: document.querySelector(".ex-2"),
-      args: [{
-        other: [
-          { regexp: /^@{2,4}/, }
-        ],
-      }],
-      testMethod: {
-        name: "toBeTruthy",
-        args: [],
-      },
-    },
     {
       element: document.querySelector(".ex-1"),
       args: [{
@@ -79,7 +69,31 @@ export default () => {
           end: [2, 9],
         },
         spaces: { points: [3, 6], },
-        other: { $: true, "!": true, },
+        other: { "\\$": true, "!": true, },
+      }],
+      testMethod: {
+        name: "toBeTruthy",
+        args: [],
+      },
+    },
+    {
+      element: document.querySelector(".ex-3"),
+      args: [{ numbers: { amount: 6, }, }],
+      testMethod: {
+        name: "toBeFalsy",
+        args: [],
+      },
+    },
+    {
+      element: document.querySelector(".ex-4"),
+      args: [{
+        other: {
+          "@": {
+            amount: 2,
+            length: 3,
+          },
+        },
+        spaces: true,
       }],
       testMethod: {
         name: "toBeTruthy",

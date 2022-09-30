@@ -1,4 +1,4 @@
-import { isElement, isFormElement, isNumber, isString, isObject, checkStringFromBeginningToEnd, isArray, } from "../helpers/index";
+import { isElement, isFormElement, isNumber, isString, isObject, setRulesForContain, isArray, } from "../helpers/index";
 
 export default class Input {
   hasLetters() {
@@ -225,44 +225,12 @@ export default class Input {
     if (!isFormElement(this)) {
       throw new Error("The target must be one of the following: input, textarea, select, datalist or output");
     }
-
+  
     if (!isObject(options)) {
       throw new Error("Argument must be of type object");
     }
 
-    let rules = [];
-    const { numbers, spaces, other, } = options;
-
-    if (numbers) {
-      rules = rules.concat(checkStringFromBeginningToEnd(numbers, /\d+/, /\d/, this.value));
-    }
-
-    if (spaces) {
-      rules = rules.concat(checkStringFromBeginningToEnd(spaces, /\s+/, /\s/, this.value));
-    }
-
-    if (other) {
-      if (isObject(other)) {
-        Object.keys(other).map((key) => {
-          // Каждый ключ - отдельный символ
-          rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
-        });
-      }
-
-      if (isArray(other)) {
-        other.map((symbol) => {
-          if (isString(symbol)) {
-            rules.push(this.value.includes(symbol));
-          }
-
-          if (isObject(symbol) && symbol.regexp) {
-            rules = rules.concat(checkStringFromBeginningToEnd(symbol, symbol.regexp, symbol.regexp, this.value));
-          }
-        });
-      }
-    }
-
-    return rules.every(Boolean);
+    return setRulesForContain(options, this.value);
   }
 
   mustNotContain(options) {
@@ -273,44 +241,12 @@ export default class Input {
     if (!isFormElement(this)) {
       throw new Error("The target must be one of the following: input, textarea, select, datalist or output");
     }
-
+  
     if (!isObject(options)) {
       throw new Error("Argument must be of type object");
     }
 
-    let rules = [];
-    const { numbers, spaces, other, } = options;
-
-    if (numbers) {
-      rules = rules.concat(checkStringFromBeginningToEnd(numbers, /\d+/g, /\d/, this.value));
-    }
-
-    if (spaces) {
-      rules = rules.concat(checkStringFromBeginningToEnd(spaces, /\s+/g, /\s/, this.value));
-    }
-
-    if (other) {
-      if (isObject(other)) {
-        Object.keys(other).map((key) => {
-          // Каждый ключ - отдельный символ
-          rules = rules.concat(checkStringFromBeginningToEnd(other[key], key, key, this.value));
-        });
-      }
-
-      if (isArray(other)) {
-        other.map((symbol) => {
-          if (isString(symbol)) {
-            rules.push(this.value.includes(symbol));
-          }
-
-          if (isObject(symbol) && symbol.regexp) {
-            rules = rules.concat(checkStringFromBeginningToEnd(symbol, symbol.regexp, symbol.regexp, this.value));
-          }
-        });
-      }
-    }
-
-    return !rules.every(Boolean);
+    return !setRulesForContain(options, this.value);
   }
 
   contains(values) {

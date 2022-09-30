@@ -6,10 +6,39 @@ export default () => {
     <div>
       <span></span>
       <input type="text" value="123 $! 321" />
+      <input class="ex-1" type="text" value="12!3!456" />
+      <input class="ex-2" type="text" value="$12345 $" />
     </div>
   `;
 
   const tests = [
+    {
+      element: document.querySelector(".ex-2"),
+      args: [{
+        numbers: { amount: 5, },
+        spaces: { amount: 1, },
+        other: { "\\$": { amount: 2, }, },
+      }],
+      testMethod: {
+        name: "toBeTruthy",
+        args: [],
+      },
+    },
+    {
+      element: document.querySelector(".ex-1"),
+      args: [{
+        other: {
+          "!": {
+            ignoreRegister: true,
+            amount: 2,
+          },
+        },
+      }],
+      testMethod: {
+        name: "toBeFalsy",
+        args: [],
+      },
+    },
     {
       element: null,
       isError: true,
@@ -45,7 +74,7 @@ export default () => {
           end: [2, 9],
         },
         spaces: { points: [3, 6], },
-        other: { $: true, "!": true, },
+        other: { "\\$": true, "!": true, },
       }],
       testMethod: {
         name: "toBeFalsy",

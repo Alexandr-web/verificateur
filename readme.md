@@ -294,7 +294,7 @@ The `options` argument has the following settings:
 ```html
 <input class="ex-1" type="text" value="N1234 5678 9012 3456">
 <input class="ex-2" type="text" value="12345678HELLO9012() 3456№;!">
-<input class="ex-3" type="text" value="@@aa">
+<input class="ex-3" type="text" value="@@@ @@@">
 ```
 ##### JavaScript
 ```javascript
@@ -319,7 +319,8 @@ console.log(input1Vr.mustContain({
     spaces: { points: [5, 10, 15], },
     other: {
         // Here the key is the character you want to see in the input string
-        "n": {
+        // Don't forget to put "\\" in front of your character
+        "\\n": {
             points: [0],
             // Ignores case
             ignoreRegister: true,
@@ -337,14 +338,16 @@ console.log(input2Vr.mustContain({
     other: [";"],
 }));
 
-// Also you can use regexp property
+// true
 console.log(input3Vr.mustContain({
-    other: [
-      {
-        regexp: /\@{1,3}/,
-        ignoreRegister: true,
-      }
-    ]
+    other: {
+      "\\@": {
+        // The number of these characters must be greater than or equal to 2
+        amount: 2,
+        // Character length
+        length: 3,
+      },
+    }
 }));
 ```
 
