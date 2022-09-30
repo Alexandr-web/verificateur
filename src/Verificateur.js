@@ -1,19 +1,19 @@
-import Input from "./utils/Input";
-import File from "./utils/File";
+import Input from "./methods/Input";
+import File from "./methods/File";
 
 const classes = [Input, File];
 
 export default (target) => {
-  // Получение и возвращение методов классов с заменой контекста на аргумент target
-  const Verificateur = classes.reduce((acc, objClass) => {
-    Object.getOwnPropertyNames(objClass.prototype).filter((methodName) => methodName !== "constructor").map((methodName) => {
-      acc[methodName] = objClass.prototype[methodName].bind(target);
-    });
+	// Получение и возвращение методов классов с заменой контекста на аргумент target
+	const Verificateur = classes.reduce((acc, objClass) => {
+		Object.getOwnPropertyNames(objClass.prototype).filter((methodName) => methodName !== "constructor").map((methodName) => {
+			acc[methodName] = objClass.prototype[methodName].bind(target);
+		});
 
-    return acc;
-  }, {});
+		return acc;
+	}, {});
 
-  window.Verificateur = Verificateur;
+	window.Verificateur = Verificateur;
 
-  return Verificateur;
+	return Verificateur;
 };
