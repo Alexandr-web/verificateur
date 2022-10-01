@@ -65,7 +65,7 @@ export default class File {
     return [...this.files].every(({ type, }) => type === types);
   }
 
-  limitedQuantity(size) {
+  limitedAmount(size) {
     if (!isElement(this)) {
       throw new Error("The target must be an HTML element");
     }

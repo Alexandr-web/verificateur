@@ -1,9 +1,9 @@
 import weightLimit from "./weightLimit";
 import mustContainType from "./mustContainType";
-import limitedQuantity from "./limitedQuantity";
+import limitedAmount from "./limitedAmount";
 
 export {
   weightLimit,
   mustContainType,
-  limitedQuantity,
+  limitedAmount,
 };

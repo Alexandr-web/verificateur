@@ -54,7 +54,7 @@ export default () => {
       testMethod,
       isError,
       setParams() {
-        return Verificateur(element).limitedQuantity(...args);
+        return Verificateur(element).limitedAmount(...args);
       },
     };
   });

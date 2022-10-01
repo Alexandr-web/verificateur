@@ -18,6 +18,7 @@ import {
   isUrl,
   mustNotContain,
   contains,
+  isBetween,
 } from "../functions/input/index";
 
 describe("Input tests", () => {
@@ -38,4 +39,5 @@ describe("Input tests", () => {
   test("isUrl", () => testHandler(isUrl()));
   test("mustNotContain", () => testHandler(mustNotContain()));
   test("contains", () => testHandler(contains()));
+  test("isBetween", () => testHandler(isBetween()));
 });

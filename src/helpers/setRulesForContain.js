@@ -5,6 +5,7 @@ import checkStringFromBeginningToEnd from "./checkStringFromBeginningToEnd";
 import getRegexpsFromOptions from "./getRegexpsFromOptions";
 
 export default (options, value) => {
+  // Массив, куда записываются все проверки (содержит только булевы значения)
   let rules = [];
   const { numbers, spaces, other, } = options;
 
@@ -51,5 +52,6 @@ export default (options, value) => {
     }
   }
 
+  // Все ли правила были соблюдены
   return rules.every(Boolean);
 };

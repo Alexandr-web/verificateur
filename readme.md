@@ -508,7 +508,7 @@ input.addEventListener("change", () => {
 });
 ```
 
-### limitedQuantity(size: Number): Boolean
+### limitedAmount(size: Number): Boolean
 This method returns true if the number of files uploaded would be less than or equal to the `size` argument
 
 The method includes the following arguments:
@@ -529,7 +529,7 @@ const inputVr = Verificateur(input);
 
 input.addEventListener("change", () => {
   // We want a maximum of 5 files
-  console.log(inputVr.limitedQuantity(5));
+  console.log(inputVr.limitedAmount(5));
 });
 ```
 
@@ -556,4 +556,53 @@ input.addEventListener("change", () => {
   // Will be true if the files are of any type from this list
   console.log(inputVr.mustContainType(["text/plain", "image/png"]));
 });
+```
+
+### isBetween(value: String, left: String, right: String, useSpaces: Boolean, ignoreRegister: Boolean): Boolean
+Returns true if the `value` argument is between the `left` and `right` arguments
+
+The method includes the following arguments:
+
+* `value`: String *(REQUIRED)*
+
+
+	The value that must be between the `left` and `right` arguments
+
+* `left`: String *(REQUIRED)*
+
+
+	The value to be placed to the left of the value of the `value` argument
+
+* `right`: String *(REQUIRED)*
+
+
+	The value to be placed to the right of the value of the `value` argument
+
+* `useSpaces`: Boolean *(OPTIONAL)*
+
+
+	Allows for spaces between the right and left side
+
+* `ignoreRegister`: Boolean *(OPTIONAL)*
+
+
+	Allows you to ignore case
+
+##### HTML
+```html
+<input type="text" value="Hello, world!">
+```
+##### JavaScript
+```javascript
+const input = document.querySelector("input");
+const inputVr = Verificateur(input);
+
+// true
+console.log(inputVr.isBetween("world", ",", "!", true));
+
+// false
+console.log(inputVr.isBetween("world", ",", "!"));
+
+// true
+console.log(inputVr.isBetween("wOrLd", "HelLO,", "!", true, true));
 ```

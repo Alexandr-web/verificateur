@@ -1,4 +1,4 @@
-import { isElement, isFormElement, isNumber, isString, isObject, setRulesForContain, isArray, } from "../helpers/index";
+import { isElement, isFormElement, isNumber, isString, isObject, setRulesForContain, isArray, isBoolean, } from "../helpers/index";
 
 export default class Input {
   hasLetters() {
@@ -267,5 +267,24 @@ export default class Input {
     }
 
     return values.map((val) => this.value.includes(val)).some(Boolean);
+  }
+
+  isBetween(value, left, right, useSpaces = false, ignoreRegister = false) {
+    if (!isElement(this)) {
+      throw new Error("The target must be an HTML element");
+    }
+  
+    if (!isFormElement(this)) {
+      throw new Error("The target must be one of the following: input, textarea, select, datalist or output");
+    }
+
+    if (![value, left, right].every((val) => isString(val))) {
+      throw new Error("The first 3 arguments must be of type string");
+    }
+
+    const useSpacesRegexp = `${useSpaces ? "\\s*" : ""}`;
+    const regexp = new RegExp(`${left}${useSpacesRegexp}${value}${useSpacesRegexp}${right}`, `${ignoreRegister ? "i" : ""}g`);
+
+    return regexp.test(this.value);
   }
 }
