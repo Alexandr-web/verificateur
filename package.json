@@ -17,7 +17,7 @@
   "keywords": [
     "validate"
   ],
-  "author": "Alexandr Yakovlev",
+  "author": "Alexandr Yakovlev <alexandr.yakovlev228@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.19.1",

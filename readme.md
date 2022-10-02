@@ -2,6 +2,14 @@
 
 A tool that allows you to validate your form and also acts as a helper when submitting data to the server
 
+## Installation
+
+To download, make sure you have [Nodejs](https://nodejs.org/) installed
+
+```cmd
+$ npm i verificateur --save-dev
+```
+
 ## How to use it
 
 ```javascript

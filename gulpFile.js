@@ -11,26 +11,37 @@ const paths = {
     to: `./${buildFolderName}`,
     fileName: "main.js",
   },
-  jsBuild: {
+  jsLibrary: {
     from: "./src/Verificateur.js",
     to: `./${buildFolderName}`,
     fileName: "Verificateur.js",
   },
+  buildLibrary: {
+    from: "./build/Verificateur.js",
+    to: "../verificateur_BUILD/build",
+    fileName: "Verificateur.js",
+  },
 };
 
-const jsBuild = () => {
-  return src(paths.jsBuild.from)
+const jsLibrary = () => {
+  return src(paths.jsLibrary.from)
     .pipe(plumber())
     .pipe(webpack({
       mode: "production",
       output: {
-        filename: paths.jsBuild.fileName,
+        filename: paths.jsLibrary.fileName,
         library: "vr",
         libraryTarget: "umd",
       },
     }))
     .pipe(uglify())
-    .pipe(dest(paths.jsBuild.to));
+    .pipe(dest(paths.jsLibrary.to));
+};
+
+const buildLibrary = () => {
+  return src(paths.buildLibrary.from)
+    .pipe(concat(paths.buildLibrary.fileName))
+    .pipe(dest(paths.buildLibrary.to));
 };
 
 const js = () => {
@@ -44,9 +55,9 @@ const js = () => {
 
 const watching = () => {
   watch(paths.js.from, parallel(js));
-  watch(paths.js.from, parallel(jsBuild));
+  watch(paths.js.from, parallel(jsLibrary));
 };
 
-exports.build = parallel(js, jsBuild);
-exports.default = parallel(js, watching);
-exports.buildLibrary = parallel(jsBuild);
+exports.build = parallel(js, jsLibrary);
+exports.default = parallel(js, jsLibrary, watching);
+exports.buildLibrary = parallel(buildLibrary);
