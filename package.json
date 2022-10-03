@@ -2,12 +2,11 @@
   "name": "verificateur",
   "version": "0.0.0",
   "description": "A tool that allows you to validate your form and also acts as a helper when submitting data to the server",
-  "main": "./build/Verificateur.js",
+  "main": "./src/Verificateur.js",
   "jest": {
     "modulePathIgnorePatterns": [
-      "<rootDir>/node_modules/",
       "<rootDir>/__tests__/functions/",
-      "<rootDir>/__tests__/testHandler.js"
+      "<rootDir>/__tests__/handlers/"
     ],
     "testEnvironment": "jsdom"
   },
@@ -18,7 +17,7 @@
     "validate"
   ],
   "author": "Alexandr Yakovlev <alexandr.yakovlev228@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.19.1",
     "@testing-library/dom": "^8.18.1",

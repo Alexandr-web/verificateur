@@ -1,5 +1,5 @@
 import { test, describe, } from "@jest/globals";
-import testHandler from "../testHandler";
+import testHandler from "../handlers/dom";
 import {
   between,
   onlyLetters,

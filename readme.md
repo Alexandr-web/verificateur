@@ -614,3 +614,38 @@ console.log(inputVr.isBetween("world", ",", "!"));
 // true
 console.log(inputVr.isBetween("wOrLd", "HelLO,", "!", true, true));
 ```
+
+### get(path: String): Promise
+Allows you to send a get request
+
+The method includes the following arguments:
+
+* `path`: String *(OPTIONAL)*
+
+
+	Additional path to the main
+
+Take the [NASA API](https://api.nasa.gov/) as an example.
+
+##### JavaScript
+```javascript
+const Ajax = Verificateur().Ajax;
+const ajax = new Ajax({
+  // Main path
+  baseUrl: "https://api.nasa.gov",
+  // Request parameters
+  reqOptions: {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Type": "application/json",
+    },
+  },
+});
+
+// Response: {type: 'cors', url: 'https://api.nasa.gov/...', redirected: false, status: 200, ok: true, …}
+ajax.get("/planetary/apod?api_key={your_key}")
+  .then((data) => console.log(data))
+  .catch((err) => {
+    throw err;
+  });
+```

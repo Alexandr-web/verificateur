@@ -13,11 +13,6 @@ const paths = {
   },
   jsLibrary: {
     from: "./src/Verificateur.js",
-    to: `./${buildFolderName}`,
-    fileName: "Verificateur.js",
-  },
-  buildLibrary: {
-    from: "./build/Verificateur.js",
     to: "../verificateur_BUILD/build",
     fileName: "Verificateur.js",
   },
@@ -38,12 +33,6 @@ const jsLibrary = () => {
     .pipe(dest(paths.jsLibrary.to));
 };
 
-const buildLibrary = () => {
-  return src(paths.buildLibrary.from)
-    .pipe(concat(paths.buildLibrary.fileName))
-    .pipe(dest(paths.buildLibrary.to));
-};
-
 const js = () => {
   return src(paths.js.from)
     .pipe(plumber())
@@ -55,9 +44,8 @@ const js = () => {
 
 const watching = () => {
   watch(paths.js.from, parallel(js));
-  watch(paths.js.from, parallel(jsLibrary));
 };
 
 exports.build = parallel(js, jsLibrary);
-exports.default = parallel(js, jsLibrary, watching);
-exports.buildLibrary = parallel(buildLibrary);
+exports.default = parallel(js, watching);
+exports.buildLibrary = parallel(jsLibrary);
