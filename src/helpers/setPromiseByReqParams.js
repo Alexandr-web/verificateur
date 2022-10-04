@@ -12,7 +12,7 @@ export default function (path, method) {
   }
 
   return fetch(`${baseUrl}${path || ""}`, {
-    ...reqOptions || {},
+    ...(reqOptions || {}),
     method,
   });
 }
