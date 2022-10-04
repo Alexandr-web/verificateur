@@ -13,6 +13,7 @@ import receiveInTerabytes from "./receiveInTerabytes";
 import checkStringFromBeginningToEnd from "./checkStringFromBeginningToEnd";
 import isBoolean from "./isBoolean";
 import setRulesForContain from "./setRulesForContain";
+import setPromiseByReqParams from "./setPromiseByReqParams";
 
 export {
   isElement,
@@ -30,4 +31,5 @@ export {
   checkStringFromBeginningToEnd,
   isBoolean,
   setRulesForContain,
+  setPromiseByReqParams,
 };

@@ -649,3 +649,93 @@ ajax.get("/planetary/apod?api_key={your_key}")
     throw err;
   });
 ```
+
+### post(path: String): Promise
+Allows you to send a post request
+
+The method includes the following arguments:
+
+* `path`: String *(OPTIONAL)*
+
+
+	Additional path to the main
+
+##### JavaScript
+```javascript
+const Ajax = Verificateur().Ajax;
+const ajax = new Ajax({
+  baseUrl: "something",
+  reqOptions: {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Type": "application/json",
+    },
+  },
+});
+
+ajax.post("/message/add")
+  .then((data) => console.log(data))
+  .catch((err) => {
+    throw err;
+  });
+```
+
+### put(path: String): Promise
+Allows you to send a put request
+
+The method includes the following arguments:
+
+* `path`: String *(OPTIONAL)*
+
+
+	Additional path to the main
+
+##### JavaScript
+```javascript
+const Ajax = Verificateur().Ajax;
+const ajax = new Ajax({
+  baseUrl: "something",
+  reqOptions: {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Type": "application/json",
+    },
+  },
+});
+
+ajax.put("/message/edit")
+  .then((data) => console.log(data))
+  .catch((err) => {
+    throw err;
+  });
+```
+
+### delete(path: String): Promise
+Allows you to send a delete request
+
+The method includes the following arguments:
+
+* `path`: String *(OPTIONAL)*
+
+
+	Additional path to the main
+
+##### JavaScript
+```javascript
+const Ajax = Verificateur().Ajax;
+const ajax = new Ajax({
+  baseUrl: "something",
+  reqOptions: {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Type": "application/json",
+    },
+  },
+});
+
+ajax.delete("/message/delete")
+  .then((data) => console.log(data))
+  .catch((err) => {
+    throw err;
+  });
+```

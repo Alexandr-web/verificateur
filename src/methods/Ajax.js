@@ -1,4 +1,4 @@
-import { isString, } from "../helpers";
+import { setPromiseByReqParams, } from "../helpers";
 
 export default class Ajax {
   constructor(options) {
@@ -6,15 +6,18 @@ export default class Ajax {
   }
 
   get(path) {
-    if (path !== undefined && !isString(path)) {
-      throw new Error("Argument must be of type string");
-    }
+    return setPromiseByReqParams.call(this, path, "GET");
+  }
 
-    const { baseUrl, reqOptions, } = this.options;
+  post(path) {
+    return setPromiseByReqParams.call(this, path, "POST");
+  }
 
-    return fetch(`${baseUrl}${path || ""}`, {
-      ...reqOptions,
-      method: "GET",
-    });
+  put(path) {
+    return setPromiseByReqParams.call(this, path, "PUT");
+  }
+
+  delete(path) {
+    return setPromiseByReqParams.call(this, path, "DELETE");
   }
 }
